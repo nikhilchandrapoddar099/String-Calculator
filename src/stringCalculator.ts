@@ -1,13 +1,15 @@
 export function add(numbers: string): number {
   if (numbers === "") return 0;
 
-  let delimiters = [","]; // Default delimiter
+  let delimiters = [","];
   if (numbers.startsWith("//")) {
     const parts = numbers.split("\n", 2);
     const delimiterPart = parts[0].slice(2);
 
-    // Handle delimiters of any length
-    if (delimiterPart.startsWith("[") && delimiterPart.endsWith("]")) {
+    if (delimiterPart.startsWith("[") && delimiterPart.includes("][")) {
+      delimiters =
+        delimiterPart.match(/\[([^\]]+)\]/g)?.map((d) => d.slice(1, -1)) || [];
+    } else if (delimiterPart.startsWith("[") && delimiterPart.endsWith("]")) {
       delimiters = [delimiterPart.slice(1, -1)];
     } else {
       delimiters = [delimiterPart];
@@ -15,7 +17,6 @@ export function add(numbers: string): number {
     numbers = parts[1];
   }
 
-  // Create a regex to split by delimiters
   const splitRegex = new RegExp(
     `[${delimiters
       .map((d) => d.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
