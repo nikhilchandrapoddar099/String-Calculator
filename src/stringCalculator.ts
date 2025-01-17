@@ -1,4 +1,5 @@
 export function add(numbers: string): number {
-    if (numbers === "") return 0;
-    return parseInt(numbers, 10);
-  }
+  if (numbers === "") return 0;
+  const nums = numbers.split(",").map(Number);
+  return nums.reduce((sum, n) => sum + n, 0);
+}
