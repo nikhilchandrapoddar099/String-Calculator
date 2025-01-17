@@ -10,19 +10,6 @@ I used TypeScript to implemente the String Calculator.
     •	Validate and throw errors for negative numbers.
     •	Written and structured following the TDD cycle: Red → Green → Refactor.
 
-# Project Structure
-
-.
-├── src/
-│ ├── StringCalculator.ts # Main implementation
-├── test/
-│ ├── StringCalculator.test.ts # Unit tests
-├── .gitignore # Ignored files and directories
-├── package.json # Project configuration
-├── tsconfig.json # TypeScript configuration
-├── jest.config.js # Jest configuration
-└── README.md # Project documentation
-
 # Installation
 
 Install Dependencies -> npm install
